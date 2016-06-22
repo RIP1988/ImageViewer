@@ -12,7 +12,7 @@ import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 
-import com.starterkit.restfx.model.FileSearch;
+import com.starterkit.viewerfx.model.FileSearch;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;

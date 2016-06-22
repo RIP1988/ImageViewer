@@ -1,4 +1,4 @@
-package com.starterkit.restfx.model;
+package com.starterkit.viewerfx.model;
 
 import java.util.ArrayList;
 import java.util.List;
