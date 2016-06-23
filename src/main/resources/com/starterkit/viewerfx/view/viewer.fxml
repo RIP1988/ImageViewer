@@ -22,6 +22,7 @@
      		 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   	  </rowConstraints>
 	    <children>
+	    	<!-- REV: tylko jeden przycisk powinien byc domyslny -->
 	      	<Button fx:id="directoryButton" defaultButton="true" mnemonicParsing="false" onAction="#directoryButtonAction" GridPane.columnIndex="0" GridPane.rowIndex="0" text="%button.directory" />
 	  		<Button fx:id="slideShowButton" defaultButton="true" mnemonicParsing="false" onAction="#slideShowButtonAction" GridPane.columnIndex="1" GridPane.rowIndex="0" text="%button.slideShow" />
 	  		<Button fx:id="slideShowEndButton" defaultButton="true" mnemonicParsing="false" onAction="#slideShowEndButtonAction" GridPane.columnIndex="2" GridPane.rowIndex="0" text="%button.slideShowEnd" />
@@ -38,10 +39,12 @@
    			 	<TableColumn fx:id="fileTypeColumn" minWidth="195.0" prefWidth="195.0" text="%column.fileType" />
    			 </columns>
    	 	</TableView>
+   	 	<!-- REV: ImageView powinien byc wewnatrz ScrollPane -->
   <ImageView fx:id="imageView" layoutX="14.0" layoutY="125.0">
   </ImageView>
   <ScrollPane fx:id="scrollPane" layoutX="14.0" layoutY="125.0" AnchorPane.topAnchor="250.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
   </ScrollPane>
+  <!-- REV: kod do usuniecia -->
   <!-- <TableView fx:id="resultTable" layoutX="14.0" layoutY="125.0" prefHeight="200.0" prefWidth="474.0">
     <placeholder>
       <Label text="%table.noImage" />

@@ -85,6 +85,7 @@ public class ViewerController {
 		initializeResultTable();
 		imageView.preserveRatioProperty().set(true);
 		scrollPane.setPannable(true);
+		// REV: dlaczego InvalidationListener, a nie ChangeListener?
 		zoomProperty.addListener(new InvalidationListener() {
 			@Override
             public void invalidated(Observable arg0) {
@@ -93,7 +94,7 @@ public class ViewerController {
             }
 		});
 	
-		
+		// REV: dlaczego EventFilter, a nie EventHandler?
 		scrollPane.addEventFilter(ScrollEvent.ANY,
                 new EventHandler<ScrollEvent>() {
                      @Override
@@ -108,6 +109,7 @@ public class ViewerController {
                      }
                 });
 		
+		// REV: lepiej zrobic to przez listenera na selectedItem
 		resultTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
@@ -133,12 +135,15 @@ public class ViewerController {
 		LOG.debug("Choose directory button clicked.");
 		DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = 
+        		// REV: okno wyboru katalogu powinno byc modalne
                 directoryChooser.showDialog(null);
          
         if(selectedDirectory == null){
+        	// REV: zmien warunek
         }
         else{
         	String extension = "";
+        	// REV: listFiles() moze przefiltrowac pliki
         	File[] allFiles = selectedDirectory.listFiles();
         	for (File file: allFiles) {
         		int i = file.getName().lastIndexOf('.');
@@ -184,6 +189,7 @@ public class ViewerController {
 			timer.schedule(new TimerTask(){
 				@Override
 				public void run() {
+					// REV: przekazanie null do handlera to zly pomysl, aktualizacja UI powinna byc wykonana w watku JavaFX
 					nextButtonAction(null);
 				}
 			}, 0, 2000);
@@ -227,6 +233,7 @@ public class ViewerController {
 			LOG.debug("Setting new image");
 			Image image = new Image(file.toURI().toString());
             imageView.setImage(image);
+            // REV: to nie bedzie konieczne, gdy poprawisz FXMLa
             scrollPane.setContent(imageView);
 		}
 	
